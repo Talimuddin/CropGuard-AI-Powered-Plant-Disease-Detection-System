@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CropGuard – AI Plant Disease Detection</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- ── Navbar ──────────────────────────────────────────────────── -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+        <a class="navbar-brand" href="#"><i class="fas fa-leaf me-2"></i>CropGuard</a>
+        <div class="d-flex align-items-center gap-2 ms-auto">
+            <!-- Language Selector -->
+            <div id="langSelectorWrapper"></div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-3">
+                <li class="nav-item"><a class="nav-link" href="#features" data-i18n="nav_features">Features</a></li>
+                <li class="nav-item"><a class="nav-link" href="#how-it-works" data-i18n="nav_how">How It Works</a></li>
+                <li class="nav-item"><a class="nav-link" href="#detector" data-i18n="nav_detector">Detector</a></li>
+                <li class="nav-item"><a class="nav-link" href="#tips" data-i18n="nav_tips">Tips</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ── Hero ────────────────────────────────────────────────────── -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 hero-content">
+                <span class="badge-pill mb-3"><i class="fas fa-robot me-1"></i><span data-i18n="hero_badge">Powered by Gemini AI</span></span>
+                <h1 class="display-4 fw-bold mb-4" data-i18n="hero_title">Protect Your Crops with AI Technology</h1>
+                <p class="lead mb-4" data-i18n="hero_sub">Early detection of plant diseases is crucial.</p>
+                <a href="#detector" class="btn btn-light btn-lg">
+                    <i class="fas fa-microscope me-2"></i><span data-i18n="hero_btn">Start Detection</span>
+                </a>
+            </div>
+            <div class="col-lg-6 mt-5 mt-lg-0">
+                <img src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?w=800" alt="Crops" class="img-fluid rounded-3 shadow hero-img">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── Features ────────────────────────────────────────────────── -->
+<section id="features" class="features-section">
+    <div class="container">
+        <h2 class="text-center mb-5" data-i18n="feat_title">Why Choose CropGuard?</h2>
+        <div class="row g-4">
+            <div class="col-md-4"><div class="feature-card reveal">
+                <i class="fas fa-bolt feature-icon"></i>
+                <h4 data-i18n="f1_title">Instant Analysis</h4>
+                <p data-i18n="f1_desc">Get results within seconds</p>
+            </div></div>
+            <div class="col-md-4"><div class="feature-card reveal">
+                <i class="fas fa-check-circle feature-icon"></i>
+                <h4 data-i18n="f2_title">Full Diagnosis</h4>
+                <p data-i18n="f2_desc">Disease, causes & treatment</p>
+            </div></div>
+            <div class="col-md-4"><div class="feature-card reveal">
+                <i class="fas fa-mobile-alt feature-icon"></i>
+                <h4 data-i18n="f3_title">Completely Free</h4>
+                <p data-i18n="f3_desc">Open-source models</p>
+            </div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ── How It Works ────────────────────────────────────────────── -->
+<section id="how-it-works" class="how-it-works">
+    <div class="container">
+        <h2 class="text-center mb-5" data-i18n="how_title">How It Works</h2>
+        <div class="row g-4">
+            <div class="col-md-4"><div class="step-card reveal"><div class="step-number">1</div>
+                <h4 data-i18n="s1_title">Take a Photo</h4><p data-i18n="s1_desc">Capture clear images</p>
+            </div></div>
+            <div class="col-md-4"><div class="step-card reveal"><div class="step-number">2</div>
+                <h4 data-i18n="s2_title">Upload Image</h4><p data-i18n="s2_desc">Drag & drop or browse</p>
+            </div></div>
+            <div class="col-md-4"><div class="step-card reveal"><div class="step-number">3</div>
+                <h4 data-i18n="s3_title">Get Full Report</h4><p data-i18n="s3_desc">Disease, causes & treatment</p>
+            </div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ── Detector ─────────────────────────────────────────────────── -->
+<section id="detector" class="upload-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <div class="upload-card">
+                    <h3 class="text-center mb-1" data-i18n="det_title">🌿 Disease Detector</h3>
+                    <p class="text-center text-muted mb-4" data-i18n="det_sub">Supports any plant</p>
+
+                    <div class="upload-area" id="dropZone">
+                        <i class="fas fa-cloud-upload-alt fa-3x mb-3"></i>
+                        <h4 class="mb-2" data-i18n="upload_title">Upload Crop Image</h4>
+                        <p class="text-muted mb-3" data-i18n="upload_sub">Drag & drop or click</p>
+                        <input type="file" id="imageUpload" accept="image/*" class="d-none">
+                        <button class="btn btn-primary btn-lg px-4" id="browseBtn">
+                            <i class="fas fa-images me-2"></i><span data-i18n="choose_btn">Choose Image</span>
+                        </button>
+                    </div>
+
+                    <div id="preview" class="text-center mt-4 d-none">
+                        <h5 class="mb-3" data-i18n="preview_title">Image Preview</h5>
+                        <img id="previewImg" src="" class="img-fluid rounded preview-img" alt="Preview">
+                        <div class="d-flex justify-content-center gap-2 mt-3">
+                            <button id="analyzeBtn" class="btn btn-primary btn-lg">
+                                <i class="fas fa-search me-2"></i><span data-i18n="analyze_btn">Analyze Disease</span>
+                            </button>
+                            <button id="newImageBtn" class="btn btn-outline-secondary btn-lg d-none">
+                                <i class="fas fa-redo me-2"></i><span data-i18n="new_btn">New Image</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="results" class="mt-4 d-none"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── Tips ─────────────────────────────────────────────────────── -->
+<section id="tips" class="tips-section">
+    <div class="container">
+        <h2 class="text-center mb-5" data-i18n="tips_title">Tips for Best Results</h2>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3"><div class="tip-card reveal text-center">
+                <i class="fas fa-sun mb-3 text-warning fa-2x"></i>
+                <h5 data-i18n="t1_title">Good Lighting</h5><p data-i18n="t1_desc">Well-lit conditions</p>
+            </div></div>
+            <div class="col-md-6 col-lg-3"><div class="tip-card reveal text-center">
+                <i class="fas fa-camera mb-3 text-info fa-2x"></i>
+                <h5 data-i18n="t2_title">Clear Focus</h5><p data-i18n="t2_desc">Sharp and focused</p>
+            </div></div>
+            <div class="col-md-6 col-lg-3"><div class="tip-card reveal text-center">
+                <i class="fas fa-expand mb-3 text-success fa-2x"></i>
+                <h5 data-i18n="t3_title">Close-Up Shot</h5><p data-i18n="t3_desc">Fill the frame</p>
+            </div></div>
+            <div class="col-md-6 col-lg-3"><div class="tip-card reveal text-center">
+                <i class="fas fa-leaf mb-3 text-danger fa-2x"></i>
+                <h5 data-i18n="t4_title">Include Context</h5><p data-i18n="t4_desc">Show healthy leaves</p>
+            </div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ── Footer ───────────────────────────────────────────────────── -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div>
+                <h4 class="mb-2"><i class="fas fa-leaf me-2"></i>CropGuard</h4>
+                <p class="mb-0 opacity-75" data-i18n="footer_sub">Protecting crops with AI</p>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+        <hr class="mt-4 mb-3 border-white opacity-25">
+        <p class="text-center mb-0 opacity-75">Made with <i class="fas fa-heart text-danger"></i> for farmers · Powered by Gemini AI</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{ url_for('static', filename='translations.js') }}"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
